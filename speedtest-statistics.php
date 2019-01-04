@@ -2,7 +2,7 @@
 <head> 
 <meta charset="utf-8" /> 
 <title>Bandwidth statistics - Up- and downstream speeds in last 24 hours</title>
-<script src="scripts/Chart.bundle.min.js"></script>
+<script src="scripts/Chart.bundle.js"></script>
 </head>
 <body>
 <h3>Bandwith statistics - last 24 hours </h3>
