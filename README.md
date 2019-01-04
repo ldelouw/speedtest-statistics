@@ -1,7 +1,9 @@
 # speedtest-statistics
-Collects speedtest from http://www.speedtest.net to a SQLite DB and draws graphs with PHP and JavaScript
+Collects up- and downstream speed with speedtest-cli from http://www.speedtest.net to SQLite DB and draws graphs using PHP and JavaScript. It consists of two parts, a Shell script and a PHP script.
 
-It consists of two parts, a Shell script and a PHP script.
+# Purpose
+* Just for fun
+* Archiving results and contact the provider with historical data in the case the bandwidth provided is lower as guaranteed in the contract
 
 ## Dependencies
 
@@ -12,7 +14,7 @@ It consists of two parts, a Shell script and a PHP script.
 
 # Installation
 
-The following procedure is for Fedora 29. It may probably works similar with other distributions as well.
+The following procedure is for Fedora 29. It may probably work similar with other distributions as well.
 
 ## Install some packages needed
 
