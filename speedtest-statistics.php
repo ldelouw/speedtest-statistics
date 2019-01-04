@@ -157,6 +157,6 @@ else {
 </select>
 <input type="submit">
 </form>
-
+<font size="2">speedtest-statistics is &copy; 2019 by Luc de Louw <a href="mailto: luc@delouw.ch">luc@delouw.ch</a>. See <a href="https://github.com/ldelouw/speedtest-statistics">https://github.com/ldelouw/speedtest-statistics</a> for more information</font>
 </body>
 </html>
