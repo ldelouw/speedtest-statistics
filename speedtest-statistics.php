@@ -23,7 +23,9 @@ else {
 print "Displaying statistics for Server ID ".$serverid. "\n<br>";
 
 if (!empty($ip)) {
-	print "The current public IPv4 address is ". $ip;
+	print "Your public IPv4 address is ". $ip." ";
+	$as=str_getcsv(file_get_contents("https://api.hackertarget.com/aslookup/?q=$ip"));
+	print "AS ".$as[1]." ".$as[3];
 }
 else {
 	print "IP lookup not possible, check SELinux and firewall settings";
