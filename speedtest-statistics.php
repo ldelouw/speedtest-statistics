@@ -1,4 +1,5 @@
-<html lang="en"> 
+<!DOCTYPE HTML>
+<html> 
 <head> 
 <meta charset="utf-8" /> 
 <title>Bandwidth statistics - Up- and downstream speeds in last 24 hours</title>
