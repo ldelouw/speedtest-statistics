@@ -77,7 +77,7 @@ Populate the DB with a table
 CREATE TABLE IF NOT EXISTS "bandwidth" ("serverid" INTEGER NOT NULL , "sponsor" VARCHAR NOT NULL , "servername" VARCHAR NOT NULL , "times" DATETIME PRIMARY KEY NOT NULL UNIQUE , "distance" FLOAT NOT NULL , "ping" FLOAT NOT NULL , "download" FLOAT NOT NULL , "upload" FLOAT NOT NULL );
 ```
 
-
+## Create the crontab
 
 ```bash
 */30 * * * * /root/speedtest-collector.sh
