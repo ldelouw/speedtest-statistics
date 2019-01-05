@@ -1,13 +1,15 @@
 <!DOCTYPE HTML>
-<html> 
+<html>
 <head> 
 <meta charset="utf-8" /> 
 <title>Bandwidth statistics - Up- and downstream speeds in last 24 hours</title>
-<script src="scripts/Chart.bundle.js"></script>
+<script src="scripts/Chart.bundle.min.js"></script>
 </head>
 <body>
 <h3>Bandwith statistics - last 24 hours </h3>
 <?php
+
+
 
 // Get out public IP address, JFYI
 $ip = file_get_contents('https://api.ipify.org');
@@ -52,9 +54,8 @@ else {
 	// Sanitize user input
 	settype($serverid, 'integer');
 
-	// build query to get the results from the last 24h
 	// Limit the query to the last 48 sample as we collect data every 30 minutes from two servers.
-	$sql = 'SELECT serverid, strftime("%H:%M-UTC", times) || " " || strftime("%Y-%m-%d", times) AS timestamp, sponsor, servername, download, upload FROM bandwidth WHERE serverid ='.$serverid." ORDER BY times LIMIT 48 OFFSET (SELECT COUNT(*)/6 FROM bandwidth)-24";
+	$sql = 'SELECT serverid,  strftime("%H:%M-UTC", times) || " " || strftime("%Y-%m-%d", times) AS timestamp, sponsor, servername, download, upload  from (select * FROM bandwidth WHERE serverid='.$serverid.' ORDER BY times DESC LIMIT 48) ORDER BY times ASC;';
 
 	// Execute and return error if unsuccessful
 	$ret = $db->query($sql);
