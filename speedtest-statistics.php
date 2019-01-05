@@ -38,7 +38,7 @@ print "Displaying statistics for Server ID ".$serverid. "\n<br>";
 
 if (!empty($ip)) {
 	print "Your public IPv4 address is ". $ip." ";
-	$objects=json_decode(file_get_contents("https://api.iptoasn.com/v1/as/ip/91.65.158.140"));
+	$objects=json_decode(file_get_contents("https://api.iptoasn.com/v1/as/ip/".$ip));
 
 	$as[1] = $objects->{'as_number'};
 	$as[3] = $objects->{'as_description'};
