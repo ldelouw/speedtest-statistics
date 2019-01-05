@@ -1,12 +1,23 @@
 <!DOCTYPE HTML>
 <html>
 <head> 
+<style>
+body {
+       margin: 0;
+       padding: 0
+     }
+#myChart {
+     position: top;
+     width: 100%;
+     height: 100%; 
+   }
+</style
 <meta charset="utf-8" /> 
 <title>Bandwidth statistics - Up- and downstream speeds in last 24 hours</title>
 <script src="scripts/Chart.bundle.js"></script>
 </head>
 <body>
-<h3>Bandwith statistics - last 24 hours </h3>
+<h3>bandwidth statistics - last 24 hours </h3>
 <?php
 
 
@@ -36,7 +47,7 @@ else {
 
 ?>
 
-<canvas id="myChart" width="1100px" height="500px"></canvas>
+<canvas id="myChart"></canvas>
 <script>
 	var bandwidth_data = <?php
 	class MyDB extends SQLite3 {
