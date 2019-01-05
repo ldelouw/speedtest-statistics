@@ -11,7 +11,7 @@ body {
      width: 100%;
      height: 100%; 
    }
-</style
+</style> 
 <meta charset="utf-8" /> 
 <title>Bandwidth statistics - Up- and downstream speeds in last 24 hours</title>
 <script src="scripts/Chart.bundle.js"></script>
@@ -38,8 +38,15 @@ print "Displaying statistics for Server ID ".$serverid. "\n<br>";
 
 if (!empty($ip)) {
 	print "Your public IPv4 address is ". $ip." ";
-	$as=str_getcsv(file_get_contents("https://api.hackertarget.com/aslookup/?q=$ip"));
-	print "<a href=\"https://bgp.he.net/AS".$as[1]."\">"."AS ".$as[1]." ".$as[3]."</a>";
+	$objects=json_decode(file_get_contents("https://api.iptoasn.com/v1/as/ip/91.65.158.140"));
+
+	$as[1] = $objects->{'as_number'};
+	$as[3] = $objects->{'as_description'};
+	
+	# Disabled as the API has limited use.
+	# $as=str_getcsv(file_get_contents("https://api.hackertarget.com/aslookup/?q=$ip"));
+	print "<br>";
+	print "Autonomous System is <a href=\"https://bgp.he.net/AS".$as[1]."\">"."AS ".$as[1]." ".$as[3]."</a>";
 }
 else {
 	print "IP lookup not possible, check SELinux and firewall settings";
@@ -65,8 +72,10 @@ else {
 	// Sanitize user input
 	settype($serverid, 'integer');
 
+	$tz=exec('date +"%Z"',$tz);
+
 	// Limit the query to the last 48 sample as we collect data every 30 minutes from two servers.
-	$sql = 'SELECT serverid,  strftime("%H:%M-UTC", times) || " " || strftime("%Y-%m-%d", times) AS timestamp, sponsor, servername, download, upload  from (select * FROM bandwidth WHERE serverid='.$serverid.' ORDER BY times DESC LIMIT 48) ORDER BY times ASC;';
+	$sql = 'SELECT serverid,  strftime("%H:%M-'.$tz.'", times, "localtime") || " " || strftime("%Y-%m-%d", times) AS timestamp, sponsor, servername, download, upload  from (select * FROM bandwidth WHERE serverid='.$serverid.' ORDER BY times DESC LIMIT 48) ORDER BY times ASC;';
 
 	// Execute and return error if unsuccessful
 	$ret = $db->query($sql);
