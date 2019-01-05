@@ -5,6 +5,10 @@ Collects up- and downstream speed with speedtest-cli from http://www.speedtest.n
 * Just for fun
 * Archiving results and contact the provider with historical data in the case the bandwidth provided is lower as guaranteed in the contract
 
+# Screenshot
+
+![screenshot](https://github.com/ldelouw/speedtest-statistics/raw/master/speedtest-stats.png)
+
 ## Dependencies
 
 * SQLite 3 -> https://www.sqlite.org
