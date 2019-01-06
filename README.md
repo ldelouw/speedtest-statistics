@@ -3,7 +3,9 @@ Collects up- and downstream speed with speedtest-cli from http://www.speedtest.n
 
 # Purpose
 * Just for fun
-* Archiving results and contact the provider with historical data in the case the bandwidth provided is lower as guaranteed in the contract
+* Archiving results and contact the provider with historical data in the case the bandwidth provided is lower as guaranteed in your contract
+
+Be aware that the speedtest statistics can be inaccurate if some other rather unusal network traffic is going on. Before contacting your ISP, check your network traffic with tools like [vnstat](https://humdi.net/vnstat/) and other tools.
 
 # Screenshot
 
@@ -89,6 +91,14 @@ CREATE TABLE IF NOT EXISTS "bandwidth" ("serverid" INTEGER NOT NULL , "sponsor" 
 */30 * * * * /root/speedtest-collector.sh
 ```
 
+## Install the PHP script
+
+Copy or fetch the script to a useful location, i.e. /var/www/html
+
+```bash
+wget https://raw.githubusercontent.com/ldelouw/speedtest-statistics/master/speedtest-statistics.php -O /var/www/html
+```
+
 ## Install the Chart Javascripts
 
 ```bash
@@ -96,10 +106,13 @@ mkdir /var/www/html/scripts
 wget https://www.chartjs.org/dist/2.7.3/Chart.bundle.js -O /var/www/html/scripts/Chart.bundle.js
 restorecon -Rv /var/www/html
 ```
+
 ## Future enhancements
 
 * Add a second graph for the Ping values
-* Choosing timeframes
+* Automatically configure the PHP script according the number of servers in the database (SQL offset etc.)
+* Other providers than speedtest.net?
+* ~~  Choosing timeframes ~~ This has been implemented in the most recent version
 
 ## Feedback
 Is welcome
